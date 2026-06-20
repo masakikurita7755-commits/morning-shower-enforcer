@@ -1,0 +1,13 @@
+# Ignore environment variables and API keys
+.env
+
+# Ignore runtime states and local calibrations
+app_state.json
+calibration.json
+
+# Ignore Python cache and virtual environment
+__pycache__/
+venv/
+.venv/
+*.pyc
+.DS_Store
