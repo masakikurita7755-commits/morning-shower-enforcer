@@ -91,7 +91,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 STATE_FILE = "app_state.json"
-STATE_LOCK = threading.Lock()
+STATE_LOCK = threading.RLock()
 
 # Initialize API clients
 detector = ShowerDetector()
