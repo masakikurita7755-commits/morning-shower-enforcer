@@ -415,7 +415,13 @@ with st.expander("🛠️ Testing & Debug Controls (Developer Mode)"):
             
     with col_t2:
         # Mocking time logic
-        mock_deadline = st.text_input("Simulate Deadline (HH:MM)", value="06:00")
+        current_deadline = os.getenv("SHOWER_DEADLINE", "06:00")
+        mock_deadline = st.text_input("Simulate Deadline (HH:MM)", value=current_deadline)
+        if mock_deadline != current_deadline:
+            os.environ["SHOWER_DEADLINE"] = mock_deadline
+            st.success(f"Deadline updated to {mock_deadline} for testing.")
+            time.sleep(1)
+            st.rerun()
         
         # Test baseline clear
         if st.button("Delete Baseline Calibration", use_container_width=True):
